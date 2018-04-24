@@ -1,0 +1,33 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27428.2037
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProyectoDAM.Android", "ProyectoDAM\ProyectoDAM.Android\ProyectoDAM.Android.csproj", "{64674682-F7A7-4DA3-9107-6DD0B32508D2}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "ProyectoDAM", "ProyectoDAM\ProyectoDAM\ProyectoDAM.shproj", "{EBAF9C3D-296C-412A-A9F8-4F58186EDBA4}"
+EndProject
+Global
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		ProyectoDAM\ProyectoDAM\ProyectoDAM.projitems*{64674682-f7a7-4da3-9107-6dd0b32508d2}*SharedItemsImports = 4
+		ProyectoDAM\ProyectoDAM\ProyectoDAM.projitems*{ebaf9c3d-296c-412a-a9f8-4f58186edba4}*SharedItemsImports = 13
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{64674682-F7A7-4DA3-9107-6DD0B32508D2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{64674682-F7A7-4DA3-9107-6DD0B32508D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{64674682-F7A7-4DA3-9107-6DD0B32508D2}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{64674682-F7A7-4DA3-9107-6DD0B32508D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{64674682-F7A7-4DA3-9107-6DD0B32508D2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{64674682-F7A7-4DA3-9107-6DD0B32508D2}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7E81AC0F-E4AE-4AC5-95B5-8593B1C137F8}
+	EndGlobalSection
+EndGlobal
