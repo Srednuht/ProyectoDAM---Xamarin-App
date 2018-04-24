@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Android.Widget;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text; 
@@ -14,9 +15,16 @@ namespace ProyectoDAM
 		public MainPage()
 		{
 			InitializeComponent();
-		}
+            OnLoadPageAsync();
 
+           
+        }
 
+        private async void OnLoadPageAsync()
+        {
+            await Task.Delay(3000);
+            await Navigation.PushModalAsync(new StartPage());
+        }
     }
     
 }

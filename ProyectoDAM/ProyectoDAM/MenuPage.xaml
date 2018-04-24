@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ProyectoDAM.MenuPage"
+             BackgroundColor="DarkSlateGray">
+    
+    <ContentPage.Content>
+        <StackLayout
+            HorizontalOptions="Center"
+            VerticalOptions="Center"
+            WidthRequest="240" 
+            >
+            <Label  Text="BikeFndr"
+                VerticalOptions="Center"
+                FontSize="50"
+                TextColor="IndianRed"
+                FontAttributes="Bold"
+                HorizontalOptions="Center"
+                x:Name="AppTitle"
+                TranslationY="-150"  
+             ></Label>
+
+            <Label  Text="Menu principal"
+                VerticalOptions="Center"
+                FontSize="Large"
+                TextColor="IndianRed"
+                FontAttributes="Bold"
+                HorizontalOptions="Center"
+                TranslationY="-50"
+
+             ></Label>
+
+            <Button  
+            Text="Ver paradas"
+            TextColor="IndianRed"
+            BackgroundColor="Azure"
+            x:Name="ParadasButton"
+            Clicked="ParadasButton_Clicked"
+                            
+            />
+            <Button  
+            Text="Parada más cercana"
+            TextColor="IndianRed"
+            BackgroundColor="Azure"
+            x:Name="ProximaButton"
+            Clicked="ProximaButton_Clicked"
+            />
+            <Button  
+            Text="Explorar paradas"
+            TextColor="IndianRed"
+            BackgroundColor="Azure"
+            x:Name="ExplorarButton"
+            Clicked="ExplorarButton_Clicked"
+            />
+            <Button  
+            Text="Cerrar APP"
+            TextColor="IndianRed"
+            BackgroundColor="Azure"
+            x:Name="CloseButton"
+            Clicked="CloseButton_Clicked"
+            />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

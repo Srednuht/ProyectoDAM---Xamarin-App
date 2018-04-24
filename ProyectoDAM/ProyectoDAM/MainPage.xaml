@@ -3,35 +3,66 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:ProyectoDAM"
              x:Class="ProyectoDAM.MainPage"
-             BackgroundColor="Black" >
+             BackgroundColor="DarkSlateGray">
 
     <ContentPage.Content>
 
-        <StackLayout
-          
-            HorizontalOptions="Center"
-            VerticalOptions="Center">
+        <StackLayout    HorizontalOptions="Center"
+                        VerticalOptions="Center" 
+                        Margin="0,0,0,0"
+                        >
 
-            <Label Text="¿Quién eres?"
-                   VerticalOptions="Center"
-                   FontSize="50"  
-                   TextColor="IndianRed"
-                   FontAttributes="Bold"
-                   HorizontalOptions="Center"
-                   x:Name="InitialText"/>
+            <Label  Text="BikeFndr"
+                VerticalOptions="Center"
+                FontSize="80"
+                TextColor="IndianRed"
+                FontAttributes="Bold"
+                HorizontalOptions="Center"
+                x:Name="AppTitle"
+             ></Label>
 
-            <Entry Placeholder="Introduce tu nombre" TextColor="White" 
-           WidthRequest="240"/>
 
-            <Button Text="Enviar" BackgroundColor="IndianRed">
+            <Image Source="mainPage.png" WidthRequest="240" TranslationY="100" ></Image>
+
+            <Label  
+                Text="® 2018| Francisco José Benavent Pérez"
+                VerticalOptions="Center"
+                FontSize="Small"  
+                TextColor="IndianRed"
+                FontAttributes="Bold"
+                HorizontalOptions="Center"
+                x:Name="copyRight"
+                TranslationY="150"
                 
-            </Button>
+        />
 
         </StackLayout>
-
-
-
     </ContentPage.Content>
 
 </ContentPage>
- 
+
+
+<!--
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:ProyectoDAM"
+             x:Class="ProyectoDAM.MainPage"
+             BackgroundColor="White">
+
+    <ContentPage.Content>
+
+        <StackLayout    HorizontalOptions="Center"
+                        VerticalOptions="Center"
+        />
+        <Label  Text="¿Quien eres?"
+                VerticalOptions="Center"
+                FontSize="50"  
+                TextColor="Azure"
+                FontAttributes="Bold"
+                HorizontalOptions="Center"
+                x:Name="InitialText"
+        />
+
+       <Entry Placeholder="Introduce tu nombre" TextColor="Azure" WidthRequest="240" PlaceholderColor="Azure" />
+
+    -->

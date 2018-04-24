@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ProyectoDAM.StartPage"
+             BackgroundColor="DarkSlateGray"
+             >
+    
+    
+    <ContentPage.Content>
+        <StackLayout  HorizontalOptions="Center"
+                      VerticalOptions="Center"
+                      Margin="0,0,0,50"
+                      >
+           <Label  Text="¿Quién eres?"
+                VerticalOptions="Center"
+                FontSize="50"  
+                TextColor="IndianRed"
+                FontAttributes="Bold"
+                HorizontalOptions="Center"
+                x:Name="InitialText"
+            />
+            <Entry
+            Placeholder="Introduce tu nombre" 
+            TextColor="IndianRed" 
+            WidthRequest="240" 
+            PlaceholderColor="IndianRed"
+            />
+            
+            <Button 
+            Text="Enviar"
+            TextColor="IndianRed"
+            WidthRequest="240"
+            Clicked="Button_Clicked"
+            BackgroundColor="Azure"
+            />
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

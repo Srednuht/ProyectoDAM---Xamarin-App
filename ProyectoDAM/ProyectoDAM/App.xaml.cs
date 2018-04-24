@@ -14,7 +14,7 @@ namespace ProyectoDAM
 			InitializeComponent();
 
 			MainPage = new ProyectoDAM.MainPage();
-		}
+        }
 
 		protected override void OnStart ()
 		{

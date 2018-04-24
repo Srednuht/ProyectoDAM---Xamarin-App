@@ -688,21 +688,26 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\bepef\\.nuget\\packages\\": {}
+    "C:\\Users\\bepef\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackagesFallback\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "c:\\users\\bepef\\source\\repos\\ProyectoDAM\\ProyectoDAM\\ProyectoDAM.Android\\ProyectoDAM.Android.csproj",
+      "projectUniqueName": "P:\\Proyectos\\ProyectoDAM---Xamarin-App\\ProyectoDAM\\ProyectoDAM.Android\\ProyectoDAM.Android.csproj",
       "projectName": "ProyectoDAM.Android",
-      "projectPath": "c:\\users\\bepef\\source\\repos\\ProyectoDAM\\ProyectoDAM\\ProyectoDAM.Android\\ProyectoDAM.Android.csproj",
+      "projectPath": "P:\\Proyectos\\ProyectoDAM---Xamarin-App\\ProyectoDAM\\ProyectoDAM.Android\\ProyectoDAM.Android.csproj",
       "packagesPath": "C:\\Users\\bepef\\.nuget\\packages\\",
-      "outputPath": "c:\\users\\bepef\\source\\repos\\ProyectoDAM\\ProyectoDAM\\ProyectoDAM.Android\\obj\\",
+      "outputPath": "P:\\Proyectos\\ProyectoDAM---Xamarin-App\\ProyectoDAM\\ProyectoDAM.Android\\obj\\",
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackagesFallback\\"
+      ],
       "configFilePaths": [
         "C:\\Users\\bepef\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.Fallback.config"
       ],
       "originalTargetFrameworks": [
         "monoandroid71"
