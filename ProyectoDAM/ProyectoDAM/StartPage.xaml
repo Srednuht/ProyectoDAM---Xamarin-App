@@ -9,7 +9,7 @@
     <ContentPage.Content>
         <StackLayout  HorizontalOptions="Center"
                       VerticalOptions="Center"
-                      Margin="0,0,0,50"
+                      Margin="0,0,0,100" 
                       >
            <Label  Text="¿Quién eres?"
                 VerticalOptions="Center"
@@ -24,15 +24,32 @@
             TextColor="IndianRed" 
             WidthRequest="240" 
             PlaceholderColor="IndianRed"
+             x:Name="NameField"
+            TextChanged="NameField_TextChanged"
             />
-            
+
             <Button 
             Text="Enviar"
             TextColor="IndianRed"
             WidthRequest="240"
             Clicked="Button_Clicked"
             BackgroundColor="Azure"
+            
             />
+
+            <Label  
+                Text="El campo de texto no puede estar vacío."
+                VerticalOptions="Center"
+                FontSize="Medium"  
+                TextColor="Red"
+                Opacity="0"
+                FontAttributes="Bold"
+                HorizontalOptions="Center"
+                x:Name="ErrorText"
+                WidthRequest="260"
+            />
+
+
 
         </StackLayout>
     </ContentPage.Content>

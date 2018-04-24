@@ -19,12 +19,20 @@ namespace ProyectoDAM
 
         private void Button_Clicked(object sender, EventArgs e)
         {
-            OnLoadPageAsync();
+            if (NameField.Text.Length > 0)
+                OnLoadPageAsync();
+            else
+                ErrorText.Opacity = 1;
         }
 
         private async void OnLoadPageAsync()
         {
             await Navigation.PushModalAsync(new MenuPage());
+        }
+
+        private void NameField_TextChanged(object sender, TextChangedEventArgs e)
+        {
+           ErrorText.Opacity = (e.NewTextValue.Length > 0) ? 0 : 1;                
         }
     }
 }
