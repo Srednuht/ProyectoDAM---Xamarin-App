@@ -25,16 +25,15 @@
             <Image Source="mainPage.png" WidthRequest="240" TranslationY="100" ></Image>
 
             <Label  
-                Text="® 2018| Francisco José Benavent Pérez"
+                Text="® 2018 | Francisco José Benavent Pérez"
                 VerticalOptions="Center"
                 FontSize="Small"  
                 TextColor="IndianRed"
                 FontAttributes="Bold"
                 HorizontalOptions="Center"
                 x:Name="copyRight"
-                TranslationY="150"
-                
-        />
+                TranslationY="150"                
+            />
 
         </StackLayout>
     </ContentPage.Content>

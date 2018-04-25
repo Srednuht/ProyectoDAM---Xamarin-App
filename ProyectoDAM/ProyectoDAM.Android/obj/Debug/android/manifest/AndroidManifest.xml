@@ -5,8 +5,8 @@
   <uses-permission android:name="android.permission.INTERNET" />
   <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
   <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-  <application android:label="ProyectoDAM.Android" android:name="android.app.Application" android:allowBackup="true" android:icon="@drawable/icon" android:debuggable="true">
-    <activity android:configChanges="orientation|screenSize" android:icon="@drawable/icon" android:label="ProyectoDAM" android:theme="@style/MainTheme" android:name="md5ee99bea4cecc019f58c1174b7a332ff3.MainActivity">
+  <application android:label="BikeFndr App" android:name="android.app.Application" android:allowBackup="true" android:icon="@drawable/icon_velib" android:debuggable="true">
+    <activity android:configChanges="screenSize" android:icon="@drawable/icon_velib" android:label="BikeFndr" android:screenOrientation="portrait" android:theme="@style/MainTheme" android:name="md5ee99bea4cecc019f58c1174b7a332ff3.MainActivity">
       <intent-filter>
         <action android:name="android.intent.action.MAIN" />
         <category android:name="android.intent.category.LAUNCHER" />
