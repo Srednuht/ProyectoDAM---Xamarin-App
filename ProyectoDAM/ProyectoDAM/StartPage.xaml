@@ -5,7 +5,7 @@
              BackgroundColor="DarkSlateGray"
              >
     
-    
+     
     <ContentPage.Content>
         <StackLayout  HorizontalOptions="Center"
                       VerticalOptions="Center"

@@ -37,12 +37,32 @@ namespace ProyectoDAM
 
         private void ProximaButton_Clicked(object sender, EventArgs e)
         {
+            OnLoadPageAsync(1);
+        }
 
+
+        private async void OnLoadPageAsync(int page)
+        {
+            switch(page)
+            {
+                case 0:
+                    await Navigation.PushModalAsync(new StationList());
+                    break;
+                case 1:
+                    await Navigation.PushModalAsync(new MapPage());
+                    break;
+                case 2:
+                    break;
+                case 3:
+                    break;
+                    
+            }
+           
         }
 
         private void ParadasButton_Clicked(object sender, EventArgs e)
         {
-           
+            OnLoadPageAsync(0);
         }
     }
 }
