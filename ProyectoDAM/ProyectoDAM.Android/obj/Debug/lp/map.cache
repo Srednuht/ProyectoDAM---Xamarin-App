@@ -34,3 +34,7 @@ Xamarin.GooglePlayServices.Maps
 System.ComponentModel
 System.Reflection.Extensions
 System.Resources.ResourceManager
+Newtonsoft.Json
+System.Net.Http.Extensions
+System.Net.Http.Primitives
+netstandard

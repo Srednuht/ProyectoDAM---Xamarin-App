@@ -9,68 +9,59 @@
     <Import_RootNamespace>ProyectoDAM</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)App.xaml" />
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)MainPage.xaml" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)View\App.xaml" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)View\MainPage.xaml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="$(MSBuildThisFileDirectory)App.xaml.cs">
+    <Compile Include="$(MSBuildThisFileDirectory)Model\Station.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)View\App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)MainPage.xaml.cs">
+    <Compile Include="$(MSBuildThisFileDirectory)View\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)MapPage.xaml.cs">
+    <Compile Include="$(MSBuildThisFileDirectory)View\MapPage.xaml.cs">
       <DependentUpon>MapPage.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)MenuPage.xaml.cs">
+    <Compile Include="$(MSBuildThisFileDirectory)View\MenuPage.xaml.cs">
       <DependentUpon>MenuPage.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)StartPage.xaml.cs">
+    <Compile Include="$(MSBuildThisFileDirectory)View\StartPage.xaml.cs">
       <DependentUpon>StartPage.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)Model\StationCell.xaml.cs">
-      <DependentUpon>StationCell.xaml</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)StationList.xaml.cs">
+    <Compile Include="$(MSBuildThisFileDirectory)View\StationList.xaml.cs">
       <DependentUpon>StationList.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)StartPage.xaml">
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)View\StartPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)MenuPage.xaml">
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)View\MenuPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)MapPage.xaml">
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)View\MapPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)StationList.xaml">
+    <Folder Include="$(MSBuildThisFileDirectory)ViewModel\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)View\StationList.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Model\StationCell.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="$(MSBuildThisFileDirectory)Model\" />
   </ItemGroup>
 </Project>
