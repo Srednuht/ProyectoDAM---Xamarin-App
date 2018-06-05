@@ -18,12 +18,31 @@ namespace ProyectoDAM
         {
             InitializeComponent();
 
-            var Map = new Map(MapSpan.FromCenterAndRadius(new Position(39.466667, -0.75), Distance.FromMiles(1)));
+            OpenMapAtPositionAsync();
 
-            
+
+
+
 
         }
 
 
+        private async Task OpenMapAtPositionAsync()
+        {
+            var locator = CrossGeolocator.Current;
+
+            locator.DesiredAccuracy = 50;
+
+
+            var location = await locator.GetPositionAsync(TimeSpan.FromTicks(10000));
+            Position position = new Position(location.Latitude, location.Longitude);
+
+            System.Diagnostics.Debug.WriteLine(position.Latitude + "," + position.Longitude);
+
+            Map MyMap = new Map(MapSpan.FromCenterAndRadius(position, Distance.FromMiles(1)));
+           
+
+            
+        }
     }
 }

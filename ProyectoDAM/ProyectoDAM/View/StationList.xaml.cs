@@ -6,6 +6,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 using ProyectoDAM.Model;
+using ProyectoDAM.Utils;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System.Net.Http;
@@ -22,51 +23,30 @@ namespace ProyectoDAM.View
     {
         public ObservableCollection<Station> Stations { get; set; }
 
+        public LatLngUTMConverter uTMConverter = new LatLngUTMConverter("WGS 84");
+
+        //public Station selectedStation = null;
 
 
         public StationList()
         {
             InitializeComponent();
             Stations = new ObservableCollection<Station>();
+
             this.Appearing += async (object sender, EventArgs e) =>
            {
                Task<int> _stationTask =  RecoverData("http://mapas.valencia.es/lanzadera/opendata/Valenbisi/JSON");
 
            };
 
-          
-
-
-
-            // RefreshCommand();
-            //Task<int> _stationTask;
-
-
-
-            /*{
-                new Station("MEDITERRANEO", "Mediterráneo - Plaza Cruz de Cañamelar", 161, 12, 2,39,0.4f),
-                new Station("PZA. ARMADA ESPAÑOLA", "Armada Española - Mariano Cuber", 162, 14, 8, 39,0.4f),
-                new Station("PASEO NEPTUNO", "Paseo Neptuno 32-34 ", 162, 3, 15, 39,0.4f),
-                new Station("PAVIA 2", "Pavía - Espadán", 162, 10, 8, 39,0.4f),
-                new Station("AVDA. PERIS Y VALERO", "Peris y Valero - Cuba", 162, 5, 19, 39,0.4f),
-                new Station("CALLE_BARCAS_FRENTE _TEATRO_PRINCIPAL", "Barcas, 11", 162, 13, 7, 39,0.4f),
-                new Station("AVDA. GRAL. URRUTIA", "General Urrutia - Granada", 162, 6, 8, 39,0.4f),
-                new Station("PROGRESO", "Don Vicente Guillot - Progreso", 162, 12, 3, 39,0.4f),
-                new Station("CALLE CAMPOS CRESPO ", "Campos Crespo - Juan de Garay", 162, 4, 12, 39,0.4f)
-
-
-
-            };
-            */
-
-            
+                     
             StationListView.ItemsSource = Stations;
         }
 
         private async Task<int> RecoverData(string v)
         {
-            
 
+            Stations = new ObservableCollection<Station>();
             HttpClient client = new HttpClient();
             string res = await client.GetStringAsync(v);
             //string json = res.RequestMessage.ToString();
@@ -81,11 +61,18 @@ namespace ProyectoDAM.View
             foreach(JToken token in results)
             {
                 string station = token["properties"].ToString();
+                string coordinates = token["geometry"]["coordinates"].ToString();
 
+                List<float> coordList = JsonConvert.DeserializeObject<List<float>>(coordinates);
                 Station stationObj = JsonConvert.DeserializeObject<Station>(station);
 
+                var latlng = uTMConverter.convertUtmToLatLng(coordList[0], coordList[1],30,"N");
+                stationObj.Lon = (float)latlng.Lng;
+                stationObj.Lat = (float)latlng.Lat;
+                
                 Stations.Add(stationObj);
             }
+
             StationListView.ItemsSource = Stations;
             return 1;
          }
@@ -95,10 +82,23 @@ namespace ProyectoDAM.View
             if (e.Item == null)
                 return;
 
-            await DisplayAlert("Item Tapped", "An item was tapped.", "OK");
+            Station s = (Station)e.Item;
+            //await DisplayAlert("Item Tapped", "Esta parada está en la posición: " + s.Lat + "," + s.Lon  , "OK");
+
+           
+            await nextPageAsync(s);
+            
+            
 
             //Deselect Item
             ((ListView)sender).SelectedItem = null;
+        }
+
+        private async Task nextPageAsync(Station s)
+        {
+            var detailsPage = new StationDetailedView();
+            detailsPage.BindingContext = s;
+            await Navigation.PushModalAsync(detailsPage);
         }
 
         private void StationListView_Refreshing(object sender, EventArgs e)

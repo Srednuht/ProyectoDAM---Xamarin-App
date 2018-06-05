@@ -9,15 +9,18 @@ namespace ProyectoDAM.Model
     public class Station : INotifyPropertyChanged
     {
        
-        private string name;         //Nombre de la estación
-        private string address;      //Dirección de la estación
+        private string name;                //Nombre de la estación
+        private string address;             //Dirección de la estación
 
-        private int number;          //Número idenficador de la estación
-        private int available;       //Número de bicicletas disponiblesen para recoger
-        private int free;            //Número de espacios libres para dejar la bicicleta
+        private int number;                 //Número idenficador de la estación
+        private int available;              //Número de bicicletas disponiblesen para recoger
+        private int free;                   //Número de espacios libres para dejar la bicicleta
 
-        private float lat;           //Latitud de la estación (coords)
-        private float lon;           //Longitud de la estación (coords)
+
+        private Coordinates coordinates;    //Coordenadas;
+
+        private float lat;                  //Latitud de la estación (coords)
+        private float lon;                  //Longitud de la estación (coords)
 
 
 
@@ -29,20 +32,17 @@ namespace ProyectoDAM.Model
             Address = "";
             Available = 0;
             Free = 0;
-            Lat = 0f;
-            Lon = 0f;
-
+            Coordinates = null;
         }
 
-        public Station(string name, string address, int number, int available, int free, float lat, float lon)
+        public Station(string name, string address, int number, int available, int free,Coordinates coords)
         {
             Name = name ?? throw new ArgumentNullException(nameof(name));
             Address = address ?? throw new ArgumentNullException(nameof(address));
             Number = number;
             Available = available;
             Free = free;
-            Lat = lat;
-            Lon = lon;
+            Coordinates = coords;
         }
 
 
@@ -51,13 +51,14 @@ namespace ProyectoDAM.Model
         public event PropertyChangedEventHandler PropertyChanged;
 
         //Getters && Setters
-        public string Name { get => name; set { UpdateName(value); } }
-        public string Address { get => address; set { UpdateAddress(value); } }
-        public int Number { get => number; set { UpdateNumber(value); } }
-        public int Available { get => available; set { UpdateAvailable(value); } }
-        public int Free { get => free; set { UpdateFree(value); } }
-        public float Lat { get => lat; set { UpdateLat(value); }}
-        public float Lon { get => lon; set { UpdateLon(value); }}
+        public string Name { get => name; set => UpdateName(value);  }
+        public string Address { get => address; set => UpdateAddress(value);  }
+        public int Number { get => number; set => UpdateNumber(value); } 
+        public int Available { get => available; set => UpdateAvailable(value); }
+        public int Free { get => free; set => UpdateFree(value); }
+        public Coordinates Coordinates { get => coordinates; set => UpdateCoordinates(value); }
+        public float Lat { get => lat; set => UpdateLat(value); }
+        public float Lon { get => lon; set => UpdateLon(value); }
 
         public string Availability
         {
@@ -67,12 +68,33 @@ namespace ProyectoDAM.Model
             }
         }
 
+        public void UpdateCoordinates(Coordinates value)
+        {
+             if(value != Coordinates)
+            {
+                coordinates = value;
+                UpdateLat(value.lat);
+                UpdateLon(value.lon);
+
+                //PropertyChanged(this, new PropertyChangedEventArgs("coordinates"));
+            }
+
+        }
 
         private void UpdateName(string value)
         {
             if(value != Name)
             {
-                name = value;
+                string[] a = value.Split('_');
+                
+                //value = value.Remove(0, 4);
+                //value = value.Replace('_', ' ');
+
+                for(int i = 1; i < a.Length; i++)
+                {
+                    name += a[i] + " ";
+                }
+                
                 //PropertyChanged(this, new PropertyChangedEventArgs("name"));
             }
                 
@@ -121,7 +143,7 @@ namespace ProyectoDAM.Model
             if (value != Lat)
             {
                 lat = value;
-               // PropertyChanged(this, new PropertyChangedEventArgs("lat"));
+                //PropertyChanged(this, new PropertyChangedEventArgs("lat"));
             }
         }
 
@@ -134,5 +156,11 @@ namespace ProyectoDAM.Model
             }
         }
 
+    }
+
+    public class Coordinates
+    {
+        public float lat;
+        public float lon;
     }
 }

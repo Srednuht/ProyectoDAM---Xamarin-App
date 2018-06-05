@@ -1,9 +1,12 @@
 FormsViewGroup
+Newtonsoft.Json
 Plugin.CurrentActivity
 Plugin.Geolocator.Abstractions
 Plugin.Geolocator
 Plugin.Permissions.Abstractions
 Plugin.Permissions
+System.Net.Http.Extensions
+System.Net.Http.Primitives
 System.Runtime
 Xamarin.Android.Support.Animated.Vector.Drawable
 Xamarin.Android.Support.Annotations
@@ -31,10 +34,7 @@ Xamarin.GooglePlayServices.Basement
 Xamarin.GooglePlayServices.Tasks
 Xamarin.GooglePlayServices.Base
 Xamarin.GooglePlayServices.Maps
+netstandard
 System.ComponentModel
 System.Reflection.Extensions
 System.Resources.ResourceManager
-Newtonsoft.Json
-System.Net.Http.Extensions
-System.Net.Http.Primitives
-netstandard

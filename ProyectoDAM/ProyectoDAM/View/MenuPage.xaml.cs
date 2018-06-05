@@ -27,18 +27,13 @@ namespace ProyectoDAM
         private void ExplorarButton_Clicked(object sender, EventArgs e)
         {
 
-            //Debería ir a nativo pero como solo vamos a desarollar para Android lo dejo aquí
-            if (App.Current.Properties.ContainsKey("nombre"))
-            {
-                App.Current.Properties.Remove("nombre");
-                App.Current.SavePropertiesAsync();
-            }
+            OnLoadPageAsync(1);
 
         }
 
         private void ProximaButton_Clicked(object sender, EventArgs e)
         {
-            OnLoadPageAsync(1);
+            
         }
         private void ParadasButton_Clicked(object sender, EventArgs e)
         {
@@ -67,6 +62,14 @@ namespace ProyectoDAM
            
         }
 
-
+        private void CambiarButton_Clicked(object sender, EventArgs e)
+        {
+            //Debería ir a nativo pero como solo vamos a desarollar para Android lo dejo aquí
+            if (App.Current.Properties.ContainsKey("nombre"))
+            {
+                App.Current.Properties.Remove("nombre");
+                App.Current.SavePropertiesAsync();
+            }
+        }
     }
 }
