@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ProyectoDAM.View.ModifyUser"
+             BackgroundColor="DarkSlateGray"
+             >
+    <ContentPage.Content>
+        <StackLayout>
+
+            <Label  Text="Introduce el nuevo usuario"
+                VerticalOptions="Center"
+                FontSize="50"  
+                TextColor="IndianRed"
+                FontAttributes="Bold"
+                HorizontalOptions="Center"
+                x:Name="LabelTexto"
+            />
+
+            <Entry
+            Placeholder="Introduce tu nombre" 
+            TextColor="IndianRed" 
+            WidthRequest="240" 
+            PlaceholderColor="IndianRed"
+             x:Name="UserNameField"
+            TextChanged="UserNameField_TextChanged"
+            />
+
+            <Button 
+            Text="Modificar"
+            TextColor="IndianRed"
+            WidthRequest="240"
+            Clicked="Store_Clicked"
+            BackgroundColor="Azure"
+            x:Name="Store"
+            
+            />
+
+            <Button 
+            Text="Cancelar"
+            TextColor="IndianRed"
+            WidthRequest="240"
+            Clicked="Cancel_Clicked"
+            BackgroundColor="Azure"
+            x:Name="Cancel"
+            
+            />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

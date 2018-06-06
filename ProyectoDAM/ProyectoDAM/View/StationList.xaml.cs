@@ -25,8 +25,6 @@ namespace ProyectoDAM.View
 
         public LatLngUTMConverter uTMConverter = new LatLngUTMConverter("WGS 84");
 
-        //public Station selectedStation = null;
-
 
         public StationList()
         {
@@ -84,11 +82,8 @@ namespace ProyectoDAM.View
 
             Station s = (Station)e.Item;
             //await DisplayAlert("Item Tapped", "Esta parada está en la posición: " + s.Lat + "," + s.Lon  , "OK");
-
            
             await nextPageAsync(s);
-            
-            
 
             //Deselect Item
             ((ListView)sender).SelectedItem = null;

@@ -81,6 +81,8 @@ P:\Proyectos\ProyectoDAM---Xamarin-App\ProyectoDAM\ProyectoDAM.Android\obj\Debug
 P:\Proyectos\ProyectoDAM---Xamarin-App\ProyectoDAM\ProyectoDAM.Android\obj\Debug\ProyectoDAM.Droid.View.MenuPage.xaml.g.cs
 P:\Proyectos\ProyectoDAM---Xamarin-App\ProyectoDAM\ProyectoDAM.Android\obj\Debug\ProyectoDAM.Droid.View.MapPage.xaml.g.cs
 P:\Proyectos\ProyectoDAM---Xamarin-App\ProyectoDAM\ProyectoDAM.Android\obj\Debug\ProyectoDAM.Droid.View.StationList.xaml.g.cs
+P:\Proyectos\ProyectoDAM---Xamarin-App\ProyectoDAM\ProyectoDAM.Android\obj\Debug\ProyectoDAM.Droid.View.StationDetailedView.xaml.g.cs
+P:\Proyectos\ProyectoDAM---Xamarin-App\ProyectoDAM\ProyectoDAM.Android\obj\Debug\ProyectoDAM.Droid.View.ModifyUser.xaml.g.cs
 P:\Proyectos\ProyectoDAM---Xamarin-App\ProyectoDAM\ProyectoDAM.Android\obj\Debug\ProyectoDAM.Android.dll
 P:\Proyectos\ProyectoDAM---Xamarin-App\ProyectoDAM\ProyectoDAM.Android\obj\Debug\ProyectoDAM.Android.pdb
 P:\Proyectos\ProyectoDAM---Xamarin-App\ProyectoDAM\ProyectoDAM.Android\obj\Debug\android\bin\com.companyname.ProyectoDAM.apk
@@ -93,12 +95,14 @@ P:\Proyectos\ProyectoDAM---Xamarin-App\ProyectoDAM\ProyectoDAM.Android\obj\Debug
 P:\Proyectos\ProyectoDAM---Xamarin-App\ProyectoDAM\ProyectoDAM.Android\obj\Debug\res\drawable\mainpage.png
 P:\Proyectos\ProyectoDAM---Xamarin-App\ProyectoDAM\ProyectoDAM.Android\obj\Debug\res\drawable\icon.png
 P:\Proyectos\ProyectoDAM---Xamarin-App\ProyectoDAM\ProyectoDAM.Android\obj\Debug\res\drawable\icon_velib.png
+P:\Proyectos\ProyectoDAM---Xamarin-App\ProyectoDAM\ProyectoDAM.Android\obj\Debug\res\drawable\larrow.png
+P:\Proyectos\ProyectoDAM---Xamarin-App\ProyectoDAM\ProyectoDAM.Android\obj\Debug\res\drawable\station.jpg
+P:\Proyectos\ProyectoDAM---Xamarin-App\ProyectoDAM\ProyectoDAM.Android\obj\Debug\res\drawable\bikeparking.png
+P:\Proyectos\ProyectoDAM---Xamarin-App\ProyectoDAM\ProyectoDAM.Android\obj\Debug\res\drawable\edit.png
 P:\Proyectos\ProyectoDAM---Xamarin-App\ProyectoDAM\ProyectoDAM.Android\obj\Debug\R.cs.flag
 P:\Proyectos\ProyectoDAM---Xamarin-App\ProyectoDAM\ProyectoDAM.Android\obj\Debug\uploadflags.txt
-P:\Proyectos\ProyectoDAM---Xamarin-App\ProyectoDAM\ProyectoDAM.Android\obj\Debug\res\drawable\larrow.png
-P:\Proyectos\ProyectoDAM---Xamarin-App\ProyectoDAM\ProyectoDAM.Android\obj\Debug\ProyectoDAM.Droid.View.StationDetailedView.xaml.g.cs
-P:\Proyectos\ProyectoDAM---Xamarin-App\ProyectoDAM\ProyectoDAM.Android\obj\Debug\res\drawable\bikeparking.png
-P:\Proyectos\ProyectoDAM---Xamarin-App\ProyectoDAM\ProyectoDAM.Android\obj\Debug\res\drawable\station.jpg
+P:\Proyectos\ProyectoDAM---Xamarin-App\ProyectoDAM\ProyectoDAM.Android\obj\Debug\ProyectoDAM.Android.csprojResolveAssemblyReference.cache
+P:\Proyectos\ProyectoDAM---Xamarin-App\ProyectoDAM\ProyectoDAM.Android\obj\Debug\ProyectoDAM.Droid.View.ClosestStation.xaml.g.cs
 P:\Proyectos\ProyectoDAM---Xamarin-App\ProyectoDAM\ProyectoDAM.Android\bin\Debug\Mono.Android.pdb
 P:\Proyectos\ProyectoDAM---Xamarin-App\ProyectoDAM\ProyectoDAM.Android\bin\Debug\mscorlib.pdb
 P:\Proyectos\ProyectoDAM---Xamarin-App\ProyectoDAM\ProyectoDAM.Android\bin\Debug\Plugin.Geolocator.Abstractions.pdb
@@ -180,7 +184,6 @@ P:\Proyectos\ProyectoDAM---Xamarin-App\ProyectoDAM\ProyectoDAM.Android\obj\Debug
 P:\Proyectos\ProyectoDAM---Xamarin-App\ProyectoDAM\ProyectoDAM.Android\obj\Debug\android\assets\System.Web.Services.pdb
 P:\Proyectos\ProyectoDAM---Xamarin-App\ProyectoDAM\ProyectoDAM.Android\obj\Debug\android\assets\System.Xml.Linq.pdb
 P:\Proyectos\ProyectoDAM---Xamarin-App\ProyectoDAM\ProyectoDAM.Android\obj\Debug\android\assets\System.Xml.pdb
-P:\Proyectos\ProyectoDAM---Xamarin-App\ProyectoDAM\ProyectoDAM.Android\obj\Debug\ProyectoDAM.Android.csprojResolveAssemblyReference.cache
 P:\Proyectos\ProyectoDAM---Xamarin-App\ProyectoDAM\ProyectoDAM.Android\bin\Debug\ProyectoDAM.Android.dll
 P:\Proyectos\ProyectoDAM---Xamarin-App\ProyectoDAM\ProyectoDAM.Android\obj\Debug\linksrc\ProyectoDAM.Android.dll.mdb
 P:\Proyectos\ProyectoDAM---Xamarin-App\ProyectoDAM\ProyectoDAM.Android\obj\Debug\linksrc\FormsViewGroup.dll.mdb

@@ -22,7 +22,7 @@ namespace ProyectoDAM.Model
         private float lat;                  //Latitud de la estación (coords)
         private float lon;                  //Longitud de la estación (coords)
 
-
+        private double currentDist;          //Variable que almacena la distancia puntual al usuario
 
         //Constructor por defecto
         public Station()
@@ -33,6 +33,7 @@ namespace ProyectoDAM.Model
             Available = 0;
             Free = 0;
             Coordinates = null;
+            CurrentDist = 100000;
         }
 
         public Station(string name, string address, int number, int available, int free,Coordinates coords)
@@ -48,6 +49,7 @@ namespace ProyectoDAM.Model
 
 
         //Implementación de la interfaz que notifica los cambios
+
         public event PropertyChangedEventHandler PropertyChanged;
 
         //Getters && Setters
@@ -59,6 +61,7 @@ namespace ProyectoDAM.Model
         public Coordinates Coordinates { get => coordinates; set => UpdateCoordinates(value); }
         public float Lat { get => lat; set => UpdateLat(value); }
         public float Lon { get => lon; set => UpdateLon(value); }
+        public double CurrentDist { get => currentDist; set => currentDist = value; }
 
         public string Availability
         {
@@ -68,6 +71,8 @@ namespace ProyectoDAM.Model
             }
         }
 
+
+
         public void UpdateCoordinates(Coordinates value)
         {
              if(value != Coordinates)
@@ -75,7 +80,6 @@ namespace ProyectoDAM.Model
                 coordinates = value;
                 UpdateLat(value.lat);
                 UpdateLon(value.lon);
-
                 //PropertyChanged(this, new PropertyChangedEventArgs("coordinates"));
             }
 
@@ -87,9 +91,6 @@ namespace ProyectoDAM.Model
             {
                 string[] a = value.Split('_');
                 
-                //value = value.Remove(0, 4);
-                //value = value.Replace('_', ' ');
-
                 for(int i = 1; i < a.Length; i++)
                 {
                     name += a[i] + " ";

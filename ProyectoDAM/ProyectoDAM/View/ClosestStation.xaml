@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ProyectoDAM.View.ClosestStation"
+             xmlns:local="clr-namespace:ProyectoDAM.Utils">
+
+
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <local:DistanceConverter x:Key="distanceConv"/>
+            <local:ColorValueConverter x:Key="colorConv"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ListView x:Name="MyListView"
+            ItemsSource="{Binding Stations}"
+            ItemTapped="Handle_ItemTapped"
+            CachingStrategy="RecycleElement"
+            BackgroundColor="DarkSlateGray"
+            SeparatorColor="IndianRed"
+            HasUnevenRows="True"
+            IsPullToRefreshEnabled="True"
+            Refreshing="MyListView_Refreshing"
+            IsRefreshing="{Binding IsRefreshing}" 
+            >
+
+
+        <ListView.ItemTemplate>
+            <DataTemplate>
+                <ViewCell>
+                    <ViewCell.View>
+                        <Grid VerticalOptions="Center" HeightRequest="50" BackgroundColor="DarkSlateGray" Margin="5,0,10,0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions >
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="14*"/>
+                                <ColumnDefinition Width="3*"/>
+                                <ColumnDefinition Width="3*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Label Text="{Binding Address}" Margin="10,2,0,0" FontSize="11" VerticalTextAlignment="Center" TextColor="IndianRed" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3"/>
+                            <Label Text="{Binding CurrentDist, Mode=Default, Converter={StaticResource Key=distanceConv}}" Margin="10,0,0,2" FontAttributes="Bold"  FontSize="9" VerticalTextAlignment="Center" TextColor="White" Grid.Row="1" Grid.Column="0"  Grid.ColumnSpan="3"/>
+
+
+                            <Label Text="Bicis" TextColor="White"  FontSize="9" Grid.Row="0"  Grid.Column="3" XAlign="Center" YAlign="Center"/>
+                            <Frame CornerRadius="10" Margin="0,0,0,4"  VerticalOptions="Center" Padding="0" BackgroundColor="{Binding Available, Mode=Default, Converter={StaticResource colorConv}"  Grid.Row="1" Grid.Column="3" >
+                                <Label Text="{Binding Available}" TextColor="White" FontAttributes="Bold" Grid.Row="1"  Grid.Column="0" YAlign="Center" XAlign="Center" />
+                            </Frame>
+
+
+                            <Label Text="Huecos" FontSize="9" TextColor="White" Grid.Row="0"  Grid.Column="2" XAlign="Center" YAlign="Center"/>
+                            <Frame CornerRadius="10" Margin="0,0,0,4" VerticalOptions="Center" Padding="0" BackgroundColor="{Binding Free, Mode=Default, Converter={StaticResource colorConv}"  Grid.Row="1" Grid.Column="2">
+                                <Label Text="{Binding Free}" TextColor="White" FontAttributes="Bold" Grid.Row="1"  Grid.Column="0" YAlign="Center" XAlign="Center" />
+                            </Frame>
+
+
+
+
+                            <Image Source="larrow.png"  Scale="2" Grid.Row="0" Grid.RowSpan="2" Grid.Column="4"/>
+
+                        </Grid>
+
+                    </ViewCell.View>
+                </ViewCell>
+            </DataTemplate>
+        </ListView.ItemTemplate>
+
+    </ListView>
+</ContentPage>

@@ -20,8 +20,21 @@ namespace ProyectoDAM
 
         private void CloseButton_Clicked(object sender, EventArgs e)
         {
-            //Debería ir a nativo pero como solo vamos a desarollar para Android lo dejo aquí
-            Android.OS.Process.KillProcess(Android.OS.Process.MyPid());
+
+            #if __ANDROID__
+             Android.OS.Process.KillProcess(Android.OS.Process.MyPid());
+            #endif
+
+        }
+
+        protected override bool OnBackButtonPressed()
+        {
+
+            #if __ANDROID__
+                Android.OS.Process.KillProcess(Android.OS.Process.MyPid());
+            #endif
+
+            return true;
         }
 
         private void ExplorarButton_Clicked(object sender, EventArgs e)
@@ -33,7 +46,7 @@ namespace ProyectoDAM
 
         private void ProximaButton_Clicked(object sender, EventArgs e)
         {
-            
+            OnLoadPageAsync(3);
         }
         private void ParadasButton_Clicked(object sender, EventArgs e)
         {
@@ -54,8 +67,10 @@ namespace ProyectoDAM
                     await Navigation.PushModalAsync(new MapPage());
                     break;
                 case 2:
+                     await Navigation.PushModalAsync(new ModifyUser());
                     break;
                 case 3:
+                    await Navigation.PushModalAsync(new ClosestStation());
                     break;
                     
             }
@@ -64,12 +79,8 @@ namespace ProyectoDAM
 
         private void CambiarButton_Clicked(object sender, EventArgs e)
         {
-            //Debería ir a nativo pero como solo vamos a desarollar para Android lo dejo aquí
-            if (App.Current.Properties.ContainsKey("nombre"))
-            {
-                App.Current.Properties.Remove("nombre");
-                App.Current.SavePropertiesAsync();
-            }
+
+            OnLoadPageAsync(2);
         }
     }
 }

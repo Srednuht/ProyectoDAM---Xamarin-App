@@ -39,7 +39,7 @@
                             
             />
             <Button  
-            Text="Parada más cercana"
+            Text="Paradas cercanas"
             TextColor="IndianRed"
             BackgroundColor="Azure"
             x:Name="ProximaButton"

@@ -7,9 +7,8 @@
 
     <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" WidthRequest="720" HeightRequest="1200">
 
-        <maps:Map x:Name="MyMap"  IsShowingUser="True" MapType="Hybrid"/>
-       
-
+        <maps:Map x:Name="mapa"  IsShowingUser="True" MapType="Hybrid" />
+        
 
     </StackLayout>
 </ContentPage>
