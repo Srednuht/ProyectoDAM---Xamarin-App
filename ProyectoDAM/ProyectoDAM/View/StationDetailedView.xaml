@@ -3,37 +3,38 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ProyectoDAM.View.StationDetailedView"
              Title="Vista detallada estación Detallada"
-             BackgroundColor="DarkSlateGray">
+             BackgroundColor="DarkSlateGray"
+             >
     
     <ContentPage.Content>
         <StackLayout Padding="40">
 
 
-            <Frame OutlineColor="Black" WidthRequest="150" HeightRequest="150" BackgroundColor="Azure"  >
-                <Image Source="station.jpg"  Aspect="AspectFill" />
-            </Frame>
+
+            <Image Source="estacion_valenbisi.jpg" WidthRequest="240"  Aspect="AspectFill" />
 
 
-            <Frame CornerRadius="10" Margin="0,4,0,4"  VerticalOptions="Center" Padding="0" BackgroundColor="IndianRed" HorizontalOptions="Center">
+
+            <Frame CornerRadius="10" Margin="0,15,0,10"  WidthRequest="240" VerticalOptions="Center" Padding="0" BackgroundColor="IndianRed" HorizontalOptions="CenterAndExpand">
                 <Label Text="{Binding Number}" FontSize="Medium" FontAttributes="Bold"  HorizontalOptions="CenterAndExpand" Margin="5,5,5,5" />
             </Frame>
 
             <AbsoluteLayout>
                 <Label Text="Nombre:" TextColor="IndianRed" FontSize="Medium" HorizontalOptions="Start" FontAttributes="Bold"/>
-                <Label Text="{Binding Name}" TextColor="White"  FontSize="Medium" FontAttributes="Bold" Margin="80,0,0,0"/>
+                <Label Text="{Binding Name}" TextColor="White"  FontSize="10" FontAttributes="Bold" Margin="80,7,0,0" VerticalTextAlignment="Center"/>
             </AbsoluteLayout>
 
-            <AbsoluteLayout>
+            <AbsoluteLayout Margin="0,15,0,0">
                 <Label Text="Dirección:" TextColor="IndianRed" FontSize="Medium" HorizontalOptions="Start" FontAttributes="Bold" />
-                <Label Text="{Binding Address}"  TextColor="White"  FontSize="Medium" FontAttributes="Bold"  Margin="100,0,0,0" /> 
+                <Label Text="{Binding Address}"  TextColor="White"  FontSize="10" FontAttributes="Bold"  Margin="90,7,0,0"  VerticalTextAlignment="Center"/> 
             </AbsoluteLayout>
 
-            <AbsoluteLayout HorizontalOptions="Center" Margin="0,30,0,0">
+            <AbsoluteLayout HorizontalOptions="Center" Margin="0,45,0,0">
                 <Image Source="mainPage.png"   WidthRequest="150"/>
                 <Image Source="bikeparking.png" WidthRequest="150" HeightRequest="80" Margin="150,0,0,0"/>
              </AbsoluteLayout>
 
-            <AbsoluteLayout HorizontalOptions="Center" Margin="0,15,0,0">
+            <AbsoluteLayout HorizontalOptions="Center" Margin="0,15,0,0"> 
                 <Label Text="{Binding Available}" TextColor="IndianRed" FontSize="25" HorizontalOptions="Center"  FontAttributes="Bold" Margin="-10,0,0,0" />
                 <Label Text="{Binding Free}" FontSize="25" TextColor="IndianRed" FontAttributes="Bold"  Margin="145,0,0,0" /> 
             </AbsoluteLayout>
@@ -41,7 +42,7 @@
             
 
 
-            <Button  Text="Navegar a parada" TextColor="IndianRed" BackgroundColor="Azure" Margin="0,50,0,0"/>
+            <Button  Text="Navegar a parada" TextColor="IndianRed" BackgroundColor="Azure" Margin="0,50,0,0" IsEnabled="False"/>
 
         </StackLayout>
 

@@ -5,7 +5,10 @@
              BackgroundColor="DarkSlateGray"
              >
     <ContentPage.Content>
-        <StackLayout>
+        <StackLayout HorizontalOptions="Center"
+                      VerticalOptions="Center"
+                     Margin="25,0,25,100" 
+                     >
 
             <Label  Text="Introduce el nuevo usuario"
                 VerticalOptions="Center"
@@ -44,6 +47,6 @@
             x:Name="Cancel"
             
             />
-        </StackLayout>
+           </StackLayout>
     </ContentPage.Content>
 </ContentPage>

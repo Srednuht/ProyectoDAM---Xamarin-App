@@ -36,6 +36,7 @@
             Clicked="Button_Clicked"
             BackgroundColor="Azure"
             x:Name="StartButton"
+            IsEnabled="False"
             
             />
 

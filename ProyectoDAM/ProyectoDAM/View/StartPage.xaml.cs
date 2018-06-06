@@ -17,12 +17,14 @@ namespace ProyectoDAM
         {
             InitializeComponent();
 
+   
             if (App.Current.Properties.ContainsKey("nombre"))
             {
                 InitialText.FontSize = (App.Current.Properties["nombre"].ToString().Length > 6) ? 40 : 60;
                 InitialText.Text = "Hola " + App.Current.Properties["nombre"].ToString();
                 NameField.Opacity = 0;
                 StartButton.Text = "Ir al Menú";
+                StartButton.IsEnabled = true;
             }
 
 
@@ -56,6 +58,7 @@ namespace ProyectoDAM
         private void NameField_TextChanged(object sender, TextChangedEventArgs e)
         {
             ErrorText.Opacity = (e.NewTextValue.Length > 0) ? 0 : 1;
+            StartButton.IsEnabled = (e.NewTextValue.Length > 0) ? true : false;
 
             if (e.NewTextValue.Length > 10)
                 NameField.Text = e.OldTextValue;

@@ -101,8 +101,9 @@ P:\Proyectos\ProyectoDAM---Xamarin-App\ProyectoDAM\ProyectoDAM.Android\obj\Debug
 P:\Proyectos\ProyectoDAM---Xamarin-App\ProyectoDAM\ProyectoDAM.Android\obj\Debug\res\drawable\edit.png
 P:\Proyectos\ProyectoDAM---Xamarin-App\ProyectoDAM\ProyectoDAM.Android\obj\Debug\R.cs.flag
 P:\Proyectos\ProyectoDAM---Xamarin-App\ProyectoDAM\ProyectoDAM.Android\obj\Debug\uploadflags.txt
-P:\Proyectos\ProyectoDAM---Xamarin-App\ProyectoDAM\ProyectoDAM.Android\obj\Debug\ProyectoDAM.Android.csprojResolveAssemblyReference.cache
 P:\Proyectos\ProyectoDAM---Xamarin-App\ProyectoDAM\ProyectoDAM.Android\obj\Debug\ProyectoDAM.Droid.View.ClosestStation.xaml.g.cs
+P:\Proyectos\ProyectoDAM---Xamarin-App\ProyectoDAM\ProyectoDAM.Android\obj\Debug\res\drawable\estacion_valenbisi.jpg
+P:\Proyectos\ProyectoDAM---Xamarin-App\ProyectoDAM\ProyectoDAM.Android\obj\Debug\ProyectoDAM.Android.csprojResolveAssemblyReference.cache
 P:\Proyectos\ProyectoDAM---Xamarin-App\ProyectoDAM\ProyectoDAM.Android\bin\Debug\Mono.Android.pdb
 P:\Proyectos\ProyectoDAM---Xamarin-App\ProyectoDAM\ProyectoDAM.Android\bin\Debug\mscorlib.pdb
 P:\Proyectos\ProyectoDAM---Xamarin-App\ProyectoDAM\ProyectoDAM.Android\bin\Debug\Plugin.Geolocator.Abstractions.pdb

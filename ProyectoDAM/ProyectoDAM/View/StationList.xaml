@@ -21,7 +21,8 @@
             IsPullToRefreshEnabled="True"
             Refreshing="StationListView_Refreshing"
             IsRefreshing="{Binding IsRefreshing}" 
-            SeparatorColor="IndianRed">
+            SeparatorColor="IndianRed"
+            >
 
         <!--Custom View Cells-->
 
@@ -35,10 +36,10 @@
                                 <RowDefinition Height="*"/>
                             </Grid.RowDefinitions>
                             <Grid.ColumnDefinitions >
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="14*"/>
                                 <ColumnDefinition Width="3*"/>
-                                <ColumnDefinition Width="3*"/> 
+                                <ColumnDefinition Width="3*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
 
@@ -48,20 +49,17 @@
 
 
                             <Label Text="Bicis" TextColor="White"  FontSize="9" Grid.Row="0"  Grid.Column="3" XAlign="Center" YAlign="Center"/>
-                            <Frame CornerRadius="10" Margin="0,0,0,4"  VerticalOptions="Center" Padding="0" BackgroundColor="{Binding Available, Mode=Default, Converter={StaticResource colorConv}}"  Grid.Row="1" Grid.Column="3" >
-                                <Label Text="{Binding Available}" TextColor="White" FontAttributes="Bold" Grid.Row="1"  Grid.Column="0" YAlign="Center" XAlign="Center" />
-                            </Frame>
-                            
-                            
-                            <Label Text="Huecos" FontSize="9" TextColor="White" Grid.Row="0"  Grid.Column="2" XAlign="Center" YAlign="Center"/>
-                            <Frame CornerRadius="10" Margin="0,0,0,4" VerticalOptions="Center" Padding="0" BackgroundColor="{Binding Free, Mode=Default, Converter={StaticResource colorConv}}"  Grid.Row="1" Grid.Column="2">
-                                <Label Text="{Binding Free}" TextColor="White" FontAttributes="Bold" Grid.Row="1"  Grid.Column="0" YAlign="Center" XAlign="Center" />
+                            <Frame CornerRadius="10" Margin="0,0,0,4"  VerticalOptions="Center" Padding="0" BackgroundColor="{Binding Available, Mode=Default, Converter={StaticResource colorConv}"  Grid.Row="1" Grid.Column="3" >
+                                <Label Text="{Binding Available}" TextColor="White" FontAttributes="Bold" Grid.Row="1"  Grid.Column="3" YAlign="Center" XAlign="Center" />
                             </Frame>
 
 
+                            <Label Text="Huecos" FontSize="9" TextColor="White" Grid.Row="0"  Grid.Column="4" XAlign="Center" YAlign="Center"/>
+                            <Frame CornerRadius="10" Margin="0,0,0,4" VerticalOptions="Center" Padding="0" BackgroundColor="{Binding Free, Mode=Default, Converter={StaticResource colorConv}"  Grid.Row="1" Grid.Column="4">
+                                <Label Text="{Binding Free}" TextColor="White" FontAttributes="Bold" Grid.Row="1"  Grid.Column="4" YAlign="Center" XAlign="Center" />
+                            </Frame>
 
-
-                            <Image Source="larrow.png"  Scale="2" Grid.Row="0" Grid.RowSpan="2" Grid.Column="4"/>
+                            <Image Source="larrow.png"  Scale="1" Grid.Row="0" Grid.RowSpan="2" Grid.Column="5"/>
 
                         </Grid>
                         

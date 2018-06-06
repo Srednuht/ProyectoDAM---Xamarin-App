@@ -15,13 +15,14 @@ namespace ProyectoDAM.View
 		public ModifyUser ()
 		{
 			InitializeComponent ();
+            Store.IsEnabled = false;
 		}
 
         private void UserNameField_TextChanged(object sender, TextChangedEventArgs e)
         {
-            Store.Opacity = (e.NewTextValue.Length > 3) ? 1 : 0;
-
-            UserNameField.Text = (e.NewTextValue.Length > 10) ? e.OldTextValue : e.NewTextValue;
+            Store.IsEnabled = (e.NewTextValue.Length > 0) ? true : false;
+            
+UserNameField.Text = (e.NewTextValue.Length > 10) ? e.OldTextValue : e.NewTextValue;
         }
 
         private void Store_Clicked(object sender, EventArgs e)
