@@ -7,10 +7,12 @@
     
      
     <ContentPage.Content>
-        <StackLayout  HorizontalOptions="Center"
-                      VerticalOptions="Center"
-                      Margin="0,0,0,100" 
-                      >
+        <StackLayout  
+            HorizontalOptions="Center"
+            VerticalOptions="Center"
+            Margin="0,0,0,100" 
+            >
+            
            <Label  Text="¿Quién eres?"
                 VerticalOptions="Center"
                 FontSize="50"  

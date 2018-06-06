@@ -5,10 +5,17 @@
              x:Class="ProyectoDAM.MapPage">
 
 
-    <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" WidthRequest="720" HeightRequest="1200">
+    <StackLayout 
+        VerticalOptions="CenterAndExpand" 
+        HorizontalOptions="CenterAndExpand" 
+        WidthRequest="720" 
+        HeightRequest="1200">
 
-        <maps:Map x:Name="mapa"  IsShowingUser="True" MapType="Hybrid" />
+        <!-- Se define el mapa a utilizar. Con el nombre será accesible desde el .cs y se podrán modificar sus parámetros -->
+        <maps:Map 
+            x:Name="mapa"  
+            IsShowingUser="True" 
+            MapType="Hybrid" />
         
-
     </StackLayout>
 </ContentPage>

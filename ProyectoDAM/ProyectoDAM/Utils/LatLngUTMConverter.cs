@@ -4,6 +4,10 @@ using System.Text;
 
 namespace ProyectoDAM.Utils
 {
+
+    /// <summary>
+    /// Conversión UTM a LatLng y vicecersa
+    /// </summary>
     public class LatLngUTMConverter
     {
         public class LatLng

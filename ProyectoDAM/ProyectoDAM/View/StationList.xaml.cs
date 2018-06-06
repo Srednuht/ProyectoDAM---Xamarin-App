@@ -18,77 +18,48 @@ using System.Windows.Input;
 
 namespace ProyectoDAM.View
 {
+    /// <summary>
+    /// Renderiza la lista de las estaciones
+    /// </summary>
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class StationList : ContentPage
     {
-        public ObservableCollection<Station> Stations { get; set; }
-
-        public LatLngUTMConverter uTMConverter = new LatLngUTMConverter("WGS 84");
 
 
+        //Inicializa la página y ejecuta la recuperación de las paradas 
         public StationList()
         {
             InitializeComponent();
-            Stations = new ObservableCollection<Station>();
 
             this.Appearing += async (object sender, EventArgs e) =>
            {
-               Task<int> _stationTask =  RecoverData("http://mapas.valencia.es/lanzadera/opendata/Valenbisi/JSON");
-
+                 StationListView.ItemsSource = await StationViewModel.RecoverData(StationViewModel.url);
            };
 
-                     
-            StationListView.ItemsSource = Stations;
         }
 
-        private async Task<int> RecoverData(string v)
-        {
-
-            Stations = new ObservableCollection<Station>();
-            HttpClient client = new HttpClient();
-            string res = await client.GetStringAsync(v);
-            //string json = res.RequestMessage.ToString();
-
-            JObject json = JObject.Parse(res);
-
-
-            JEnumerable<JToken> results = json["features"].Children();
-            // Above three lines can be replaced with new helper method below
-            // string responseBody = await client.GetStringAsync(uri);
-
-            foreach(JToken token in results)
-            {
-                string station = token["properties"].ToString();
-                string coordinates = token["geometry"]["coordinates"].ToString();
-
-                List<float> coordList = JsonConvert.DeserializeObject<List<float>>(coordinates);
-                Station stationObj = JsonConvert.DeserializeObject<Station>(station);
-
-                var latlng = uTMConverter.convertUtmToLatLng(coordList[0], coordList[1],30,"N");
-                stationObj.Lon = (float)latlng.Lng;
-                stationObj.Lat = (float)latlng.Lat;
-                
-                Stations.Add(stationObj);
-            }
-
-            StationListView.ItemsSource = Stations;
-            return 1;
-         }
-
+        /// <summary>
+        /// Se ejecuta al seleccionar un elemento de la lista. Lanza la página siguiente en la navegación
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         async void Handle_ItemTapped(object sender, ItemTappedEventArgs e)
         {
             if (e.Item == null)
                 return;
 
-            Station s = (Station)e.Item;
-            //await DisplayAlert("Item Tapped", "Esta parada está en la posición: " + s.Lat + "," + s.Lon  , "OK");
-           
+            Station s = (Station)e.Item;           
             await nextPageAsync(s);
 
             //Deselect Item
             ((ListView)sender).SelectedItem = null;
         }
 
+        /// <summary>
+        /// Método asincrono para el cambio de página. Añade la estación al BindingContext
+        /// </summary>
+        /// <param name="s"> Estación a añadir al BindingContext </param>
+        /// <returns></returns>
         private async Task nextPageAsync(Station s)
         {
             var detailsPage = new StationDetailedView();
@@ -96,11 +67,15 @@ namespace ProyectoDAM.View
             await Navigation.PushModalAsync(detailsPage);
         }
 
-        private void StationListView_Refreshing(object sender, EventArgs e)
+        /// <summary>
+        /// Funcion que se ejecuta al actualizar la lista
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private async Task StationListView_RefreshingAsync(object sender, EventArgs e)
         {
-            Task<int> _stationTask = RecoverData("http://mapas.valencia.es/lanzadera/opendata/Valenbisi/JSON");
+            StationListView.ItemsSource = await StationViewModel.RecoverData(StationViewModel.url);
 
-            _stationTask.Wait(3000);
             StationListView.EndRefresh();
         }
     }

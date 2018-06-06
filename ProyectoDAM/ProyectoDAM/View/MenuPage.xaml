@@ -8,17 +8,17 @@
         <StackLayout
             HorizontalOptions="Center"
             VerticalOptions="Center"
-            WidthRequest="240" 
-            >
-            <Label  Text="BikeFndr"
+            WidthRequest="240">
+
+            <Label
+                Text="BikeFndr"
                 VerticalOptions="Center"
                 FontSize="50"
                 TextColor="IndianRed"
                 FontAttributes="Bold"
                 HorizontalOptions="Center"
                 x:Name="AppTitle"
-                TranslationY="-150"  
-             ></Label>
+                TranslationY="-150" />
 
             <Label  Text="Menu principal"
                 VerticalOptions="Center"

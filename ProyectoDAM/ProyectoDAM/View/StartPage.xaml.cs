@@ -9,14 +9,20 @@ using Xamarin.Forms.Xaml;
 
 namespace ProyectoDAM
 {
+    /// <summary>
+    /// Página Inicial de la aplicación. Sirve para la primera autenticación y para darle la bienvenida al usuario.
+    /// </summary>
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class StartPage : ContentPage
     {
 
+        /// <summary>
+        /// Se comprueba si existe o no un nombre de usuario. Para solicitar el mismo o mostrar el almacenado
+        /// en funcion su existencia. 
+        /// </summary>
         public StartPage()
         {
             InitializeComponent();
-
    
             if (App.Current.Properties.ContainsKey("nombre"))
             {

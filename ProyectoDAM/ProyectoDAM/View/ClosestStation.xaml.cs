@@ -20,39 +20,73 @@ namespace ProyectoDAM.View
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ClosestStation : ContentPage
     {
-        public ObservableCollection<Station> Stations { get; set; }
 
-        public LatLngUTMConverter uTMConverter = new LatLngUTMConverter("WGS 84");
-
+        //Inicializa la página y ejecuta la recuperación de las paradas 
         public ClosestStation()
         {
             InitializeComponent();
 
-            Stations = new ObservableCollection<Station>();
+           
 
             this.Appearing += async (object sender, EventArgs e) =>
             {
-                Task<int> _stationTask = RecoverData("http://mapas.valencia.es/lanzadera/opendata/Valenbisi/JSON");
-
+               ObservableCollection<Station> _stations = await StationViewModel.RecoverData(StationViewModel.url);
+               await orderCollectionAsync(_stations);
             };
 
             
         }
 
+        /// <summary>
+        /// Calcula la distancia a las estaciones y las ordena por proximidad
+        /// </summary>
+        /// <param name="stations"> Colección de estaciones</param>
+        /// <returns></returns>
+        private async Task orderCollectionAsync(ObservableCollection<Station> stations)
+        {
+
+            var locator = CrossGeolocator.Current;
+
+            locator.DesiredAccuracy = 20;
+
+            var location = await locator.GetPositionAsync(TimeSpan.FromTicks(10000));
+            Position position = new Position(location.Latitude, location.Longitude);
+
+            var UTM_GPS = StationViewModel.uTMConverter.convertLatLngToUtm(location.Latitude, location.Longitude);
+           
+            for (int i = 0; i < stations.Count; i++)
+            {
+                var UTM_Station = StationViewModel.uTMConverter.convertLatLngToUtm(stations[i].Lat, stations[i].Lon);
+
+                stations[i].CurrentDist = Math.Sqrt(Math.Pow((UTM_Station.Easting - UTM_GPS.Easting), 2) + Math.Pow((UTM_Station.Northing - UTM_GPS.Northing), 2));
+            }
+            
+            MyListView.ItemsSource = stations.OrderBy(x => x.CurrentDist);
+        }
+
+
+        /// <summary>
+        /// Se ejecuta al seleccionar un elemento de la lista. Lanza la página siguiente en la navegación
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         async void Handle_ItemTapped(object sender, ItemTappedEventArgs e)
         {
             if (e.Item == null)
                 return;
 
             Station s = (Station)e.Item;
-            //await DisplayAlert("Item Tapped", "Esta parada está en la posición: " + s.Lat + "," + s.Lon  , "OK");
-
             await nextPageAsync(s);
 
             //Deselect Item
             ((ListView)sender).SelectedItem = null;
         }
 
+        /// <summary>
+        /// Método asincrono para el cambio de página. Añade la estación al BindingContext
+        /// </summary>
+        /// <param name="s"> Estación a añadir al BindingContext </param>
+        /// <returns></returns>
         private async Task nextPageAsync(Station s)
         {
             var detailsPage = new StationDetailedView();
@@ -62,56 +96,15 @@ namespace ProyectoDAM.View
 
 
 
-        private async Task<int> RecoverData(string v)
+        /// <summary>
+        /// Funcion que se ejecuta al actualizar la lista
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private async Task MyListView_RefreshingAsync(object sender, EventArgs e)
         {
+            await orderCollectionAsync(await StationViewModel.RecoverData(StationViewModel.url));
 
-            Stations = new ObservableCollection<Station>();
-            HttpClient client = new HttpClient();
-            string res = await client.GetStringAsync(v);
-
-            JObject json = JObject.Parse(res);
-
-
-            JEnumerable<JToken> results = json["features"].Children();
-
-
-            /* Calculamos la posición del usuario */
-            var locator = CrossGeolocator.Current;
-
-            locator.DesiredAccuracy = 25;
-            var location = await locator.GetPositionAsync(TimeSpan.FromTicks(10000));
-            /* */
-
-            foreach (JToken token in results)
-            {
-                string station = token["properties"].ToString();
-                string coordinates = token["geometry"]["coordinates"].ToString();
-
-                List<float> coordList = JsonConvert.DeserializeObject<List<float>>(coordinates);
-                Station stationObj = JsonConvert.DeserializeObject<Station>(station);
-
-                var latlng = uTMConverter.convertUtmToLatLng(coordList[0], coordList[1], 30, "N");
-                stationObj.Lon = (float)latlng.Lng;
-                stationObj.Lat = (float)latlng.Lat;
-
-                var UTM = uTMConverter.convertLatLngToUtm(location.Latitude, location.Longitude);
-
-                stationObj.CurrentDist = Math.Sqrt(Math.Pow((coordList[0] - UTM.Easting), 2) + Math.Pow((double)(coordList[1] - UTM.Northing), 2));
-                Stations.Add(stationObj);
-            }
-
-
-            var aux = Stations.OrderBy(x => x.CurrentDist);
-            
-            MyListView.ItemsSource = aux;
-            return 1;
-        }
-
-        private void MyListView_Refreshing(object sender, EventArgs e)
-        {
-            Task<int> _stationTask = RecoverData("http://mapas.valencia.es/lanzadera/opendata/Valenbisi/JSON");
-
-            _stationTask.Wait(3000);
             MyListView.EndRefresh();
         }
     }

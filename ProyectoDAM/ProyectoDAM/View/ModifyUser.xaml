@@ -5,19 +5,21 @@
              BackgroundColor="DarkSlateGray"
              >
     <ContentPage.Content>
-        <StackLayout HorizontalOptions="Center"
-                      VerticalOptions="Center"
-                     Margin="25,0,25,100" 
-                     >
+        <StackLayout
+            HorizontalOptions="Center"
+            VerticalOptions="Center"
+            Margin="25,0,25,100" 
+            >
 
-            <Label  Text="Introduce el nuevo usuario"
+            <Label  
+                Text="Introduce el nuevo usuario"
                 VerticalOptions="Center"
                 FontSize="50"  
                 TextColor="IndianRed"
                 FontAttributes="Bold"
                 HorizontalOptions="Center"
                 x:Name="LabelTexto"
-            />
+                />
 
             <Entry
             Placeholder="Introduce tu nombre" 

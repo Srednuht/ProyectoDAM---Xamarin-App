@@ -6,14 +6,14 @@ using System.Text;
 namespace ProyectoDAM.Model
 {
     //Modelo de datos para almacenar la información de una estación
-    public class Station : INotifyPropertyChanged
+    public class Station 
     {
        
         private string name;                //Nombre de la estación
         private string address;             //Dirección de la estación
 
         private int number;                 //Número idenficador de la estación
-        private int available;              //Número de bicicletas disponiblesen para recoger
+        private int available;              //Número de bicicletas disponibles en la estación
         private int free;                   //Número de espacios libres para dejar la bicicleta
 
 
@@ -36,6 +36,16 @@ namespace ProyectoDAM.Model
             CurrentDist = 100000;
         }
 
+
+        /// <summary>
+        /// Contructor para una estación
+        /// </summary>
+        /// <param name="name"> Nombre de la estación</param>
+        /// <param name="address"> Dirección de la estación </param>
+        /// <param name="number"> Número identificador de la estación </param>
+        /// <param name="available"> Número de bicicletas disponibles en la estación</param>
+        /// <param name="free"> Número de huecos libres en la estación </param>
+        /// <param name="coords"> Coordenadas de la estación </param>
         public Station(string name, string address, int number, int available, int free,Coordinates coords)
         {
             Name = name ?? throw new ArgumentNullException(nameof(name));
@@ -46,11 +56,6 @@ namespace ProyectoDAM.Model
             Coordinates = coords;
         }
 
-
-
-        //Implementación de la interfaz que notifica los cambios
-
-        public event PropertyChangedEventHandler PropertyChanged;
 
         //Getters && Setters
         public string Name { get => name; set => UpdateName(value);  }
@@ -63,13 +68,6 @@ namespace ProyectoDAM.Model
         public float Lon { get => lon; set => UpdateLon(value); }
         public double CurrentDist { get => currentDist; set => currentDist = value; }
 
-        public string Availability
-        {
-            get
-            {
-                return string.Format("{0} / " + (available + free).ToString(), available);
-            }
-        }
 
 
 
@@ -80,7 +78,6 @@ namespace ProyectoDAM.Model
                 coordinates = value;
                 UpdateLat(value.lat);
                 UpdateLon(value.lon);
-                //PropertyChanged(this, new PropertyChangedEventArgs("coordinates"));
             }
 
         }
@@ -96,7 +93,7 @@ namespace ProyectoDAM.Model
                     name += a[i] + " ";
                 }
                 
-                //PropertyChanged(this, new PropertyChangedEventArgs("name"));
+               
             }
                 
         }
@@ -107,7 +104,6 @@ namespace ProyectoDAM.Model
             if (value != Address)
             {
                 address = value;
-                //PropertyChanged(this, new PropertyChangedEventArgs("address"));
             }
                
         }
@@ -117,7 +113,6 @@ namespace ProyectoDAM.Model
             if (value != Number)
             {
                 number = value;
-                //PropertyChanged(this, new PropertyChangedEventArgs("number"));
             }
         }
 
@@ -125,8 +120,7 @@ namespace ProyectoDAM.Model
         {
             if (value != Available)
             {
-                available = value;
-                //PropertyChanged(this, new PropertyChangedEventArgs("available"));
+                available = value;  
             }
         }
 
@@ -134,8 +128,7 @@ namespace ProyectoDAM.Model
         {
             if (value != Free)
             {
-                free = value;
-                //PropertyChanged(this, new PropertyChangedEventArgs("free"));
+                free = value;  
             }
         }
 
@@ -144,7 +137,6 @@ namespace ProyectoDAM.Model
             if (value != Lat)
             {
                 lat = value;
-                //PropertyChanged(this, new PropertyChangedEventArgs("lat"));
             }
         }
 
@@ -153,12 +145,13 @@ namespace ProyectoDAM.Model
             if (value != Lon)
             {
                 lon = value;
-                //PropertyChanged(this, new PropertyChangedEventArgs("lon"));
             }
         }
 
     }
 
+
+    //Clase empotrada para almacenar las coordenadas
     public class Coordinates
     {
         public float lat;

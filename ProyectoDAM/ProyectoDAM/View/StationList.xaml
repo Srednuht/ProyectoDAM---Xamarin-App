@@ -5,6 +5,7 @@
              x:Class="ProyectoDAM.View.StationList">
 
 
+    <!-- Referencias a los converters que se van a utilizar -->
     <ContentPage.Resources>
         <ResourceDictionary>
             <local:ColorValueConverter x:Key="colorConv"/>
@@ -19,7 +20,7 @@
             BackgroundColor="DarkSlateGray"
             HasUnevenRows="True"
             IsPullToRefreshEnabled="True"
-            Refreshing="StationListView_Refreshing"
+            Refreshing="StationListView_RefreshingAsync"
             IsRefreshing="{Binding IsRefreshing}" 
             SeparatorColor="IndianRed"
             >

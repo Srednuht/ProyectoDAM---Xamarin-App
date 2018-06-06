@@ -4,7 +4,7 @@
   
   
 	<application android:label="BikeFndr App">
-		<meta-data android:name="com.google.android.geo.API_KEY" android:value="YOUR_API_KEY_GOES_HERE" />
+		<meta-data android:name="com.google.android.geo.API_KEY" android:value="AIzaSyDNbXJSk0FpmT0ixcfZtxtKQLSq4SFcAtg" />
     <meta-data android:name="com.google.andoird.gms.version" android:value="@integer/google_play_services_version"/>
 	</application>
   

@@ -9,6 +9,9 @@ using Xamarin.Forms.Xaml;
 
 namespace ProyectoDAM.View
 {
+    /// <summary>
+    /// Clase que representa a la vista detalle de cada parada
+    /// </summary>
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class StationDetailedView : ContentPage
 	{

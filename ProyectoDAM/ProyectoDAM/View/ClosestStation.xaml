@@ -4,8 +4,7 @@
              x:Class="ProyectoDAM.View.ClosestStation"
              xmlns:local="clr-namespace:ProyectoDAM.Utils">
 
-
-
+    <!-- Referencias a los converters que se van a utilizar -->
     <ContentPage.Resources>
         <ResourceDictionary>
             <local:DistanceConverter x:Key="distanceConv"/>
@@ -21,7 +20,7 @@
             SeparatorColor="IndianRed"
             HasUnevenRows="True"
             IsPullToRefreshEnabled="True"
-            Refreshing="MyListView_Refreshing"
+            Refreshing="MyListView_RefreshingAsync"
             IsRefreshing="{Binding IsRefreshing}" 
             >
 
@@ -30,6 +29,7 @@
             <DataTemplate>
                 <ViewCell>
                     <ViewCell.View>
+                        <!-- Se define un grid para representar la celda personalizada -->
                         <Grid VerticalOptions="Center" HeightRequest="50" BackgroundColor="DarkSlateGray" Margin="5,0,10,0">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="*"/>
@@ -43,6 +43,8 @@
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
 
+                            
+                            
                             <Label Text="{Binding Address}" Margin="10,2,0,0" FontSize="11" VerticalTextAlignment="Center" TextColor="IndianRed" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3"/>
                             <Label Text="{Binding CurrentDist, Mode=Default, Converter={StaticResource Key=distanceConv}}" Margin="10,0,0,2" FontAttributes="Bold"  FontSize="9" VerticalTextAlignment="Center" TextColor="White" Grid.Row="1" Grid.Column="0"  Grid.ColumnSpan="3"/>
 

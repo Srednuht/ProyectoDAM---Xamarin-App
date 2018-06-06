@@ -15,102 +15,70 @@ using System.Net.Http;
 using Newtonsoft.Json.Linq;
 using Newtonsoft.Json;
 using System.Collections;
+using ProyectoDAM.View;
 
 namespace ProyectoDAM
-{
+{   
+    /// <summary>
+    /// Clase que renderiza el mapa con todas las estaciones
+    /// </summary>
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MapPage : ContentPage
     {
-
+        
+        //Lista de Pins para representar la posición de las estaciones
         public List<Pin> pins;
 
-        public LatLngUTMConverter uTMConverter = new LatLngUTMConverter("WGS 84");
+        //Lista de Estaciones
+        public ObservableCollection<Station> stations;
 
-
-
+        /// <summary>
+        /// Inicializa la lista de pins y recupera la información de las paradas
+        /// </summary>
         public MapPage()
         {
             InitializeComponent();
 
             pins = new List<Pin>();
 
-            this.Appearing += async (object sender, EventArgs e) =>
-            {
-                Task<int> _stationTask =  RecoverData("http://mapas.valencia.es/lanzadera/opendata/Valenbisi/JSON");
-
-            };
-
-            //OpenMapAtPositionAsync();
-
-        }
-
-        public MapPage(float lat ,float lon)
-        {
-            InitializeComponent();
-
-            pins = new List<Pin>();
 
             this.Appearing += async (object sender, EventArgs e) =>
             {
-                Task<int> _stationTask = RecoverData("http://mapas.valencia.es/lanzadera/opendata/Valenbisi/JSON");
-
+                    stations = await StationViewModel.RecoverData(StationViewModel.url);
+                    await mapSetupAsync(stations);
             };
 
-            
-            
+           
+
         }
 
-        private async Task<int> RecoverData(string v)
+        private async Task mapSetupAsync(ObservableCollection<Station> stations)
         {
-
-            HttpClient client = new HttpClient();
-            string res = await client.GetStringAsync(v);
-
-            JObject json = JObject.Parse(res);
-
-
-            JEnumerable<JToken> results = json["features"].Children();
-            // Above three lines can be replaced with new helper method below
-            // string responseBody = await client.GetStringAsync(uri);
-
-            foreach (JToken token in results)
+            for (int i = 0; i < stations.Count; i++)
             {
-                string station = token["properties"].ToString();
-                string coordinates = token["geometry"]["coordinates"].ToString();
-
-                List<float> coordList = JsonConvert.DeserializeObject<List<float>>(coordinates);
-                Station stationObj = JsonConvert.DeserializeObject<Station>(station);
-
-                var latlng = uTMConverter.convertUtmToLatLng(coordList[0], coordList[1], 30, "N");
-                stationObj.Lon = (float)latlng.Lng;
-                stationObj.Lat = (float)latlng.Lat;
-
                 Pin pin = new Pin()
                 {
-                    Label = stationObj.Address + "\n Bicis: " + stationObj.Available + "\n Huecos: " + stationObj.Free,
-                    Position = new Position(latlng.Lat, latlng.Lng)
+                    Label = stations[i].Address + "\n Bicis: " + stations[i].Available + "\n Huecos: " + stations[i].Free,
+                    Position = new Position(stations[i].Lat, stations[i].Lon)
                 };
 
-                 pins.Add(pin);
-
+                pins.Add(pin);
             }
 
-            var locator = CrossGeolocator.Current;
+        var locator = CrossGeolocator.Current;
 
-            locator.DesiredAccuracy = 20;
+        locator.DesiredAccuracy = 20;
 
+        var location = await locator.GetPositionAsync(TimeSpan.FromTicks(10000));
+        Position position = new Position(location.Latitude, location.Longitude);
 
-            var location = await locator.GetPositionAsync(TimeSpan.FromTicks(10000));
-            Position position = new Position(location.Latitude, location.Longitude);
-
-
-            for (int i = 0; i < pins.Count; i++)
-                mapa.Pins.Add(pins[i]);
+        for (int j = 0; j<pins.Count; j++)
+                mapa.Pins.Add(pins[j]);
 
             mapa.MoveToRegion(MapSpan.FromCenterAndRadius(position, Distance.FromMiles(1)));
            
-
-            return 1;
         }
+
+    
     }
 }

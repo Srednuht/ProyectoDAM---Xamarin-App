@@ -6,6 +6,10 @@ using Xamarin.Forms;
 
 namespace ProyectoDAM.Utils
 {
+
+    /// <summary>
+    /// Se usa para poder mostrar una frase concreta al recibir un valor de distancia
+    /// </summary>
     class DistanceConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
